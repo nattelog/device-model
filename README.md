@@ -32,11 +32,11 @@ Constructor.
 
 Sets the angles of the model.
 
-**alpha** `Number` The alpha angle in radians.
+**alpha** `Number` The alpha angle in degrees.
 
-**beta** `Number` The beta angle in radians.
+**beta** `Number` The beta angle in degrees.
 
-**gamma** `Number` The gamma angle in radians.
+**gamma** `Number` The gamma angle in degrees.
 
 
 #### `getAxisAngles()`

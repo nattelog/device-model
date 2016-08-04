@@ -1,6 +1,6 @@
 {
   "name": "device-model",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PD controlled WebGL 3D model that can rotate using Euler angles",
   "main": "index.js",
   "scripts": {

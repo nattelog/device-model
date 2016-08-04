@@ -15,7 +15,7 @@ var betaController;
 var gammaController;
 
 function buildDevice() {
-  var geometry = new THREE.BoxGeometry(100, 200, 50);
+  var geometry = new THREE.BoxGeometry(10, 20, 1.5);
   var material = new THREE.MeshBasicMaterial({
     vertexColors: THREE.FaceColors,
     overdraw: 0.5
@@ -35,15 +35,16 @@ function build3DModel(id, w, h) {
   var width = w || container.offsetWidth;
   var height = h || width;
 
-  camera = new THREE.PerspectiveCamera(70, width / height, 1, 1000);
-  camera.position.y = 150;
-  camera.position.z = 500;
+  camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  camera.position.y = -25;
 
   device = buildDevice();
-  device.position.y = 200;
 
   scene = new THREE.Scene();
   scene.add(device);
+
+  camera.lookAt(scene.position);
+  camera.updateMatrixWorld();
 
   renderer = new THREE.WebGLRenderer();
   renderer.setClearColor(0xf0f0f0);
@@ -56,17 +57,13 @@ function toRad(degrees) {
 }
 
 function render() {
-  var x = device.rotation.x;
-  var y = device.rotation.y;
-  var z = device.rotation.z;
-
   device.rotation.x = 0;
   device.rotation.y = 0;
   device.rotation.z = 0;
 
-  device.rotateY(gammaController.update(y));
-  device.rotateX(betaController.update(x));
-  device.rotateZ(alphaController.update(z));
+  device.rotateZ(alphaController.update());
+  device.rotateX(betaController.update());
+  device.rotateY(gammaController.update());
 
   renderer.render(scene, camera);
 }

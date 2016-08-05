@@ -80,6 +80,13 @@ DeviceModel.prototype.setEulerAngles = function(alpha, beta, gamma) {
   alphaController.setTarget(toRad(alpha));
   betaController.setTarget(toRad(beta));
   gammaController.setTarget(toRad(gamma));
+
+  if (!gammaController.inside(gammaController.PID.target)) {
+    alphaController.pos = alphaController.PID.target;
+    alphaController.v = 0;
+    betaController.pos = betaController.PID.target;
+    betaController.v = 0;
+  }
 };
 
 function DeviceModel(id, width, height, dt) {

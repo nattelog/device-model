@@ -47,7 +47,7 @@ function build3DModel(id, w, h) {
   camera.updateMatrixWorld();
 
   renderer = new THREE.WebGLRenderer();
-  renderer.setClearColor(0xf0f0f0);
+  renderer.setClearColor(0xffffff);
   renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
 }
